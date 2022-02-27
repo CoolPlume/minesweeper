@@ -140,17 +140,20 @@ BOOL CminesweeperDlg::OnInitDialog()
 					end_flag = true;
 					break;
 				}
-				if ( const double flag = rand ( ) / static_cast<double>(RAND_MAX); flag < probability )
-				{
-					//雷
-					location[i][j] = true;
-					now_mine++;
 
-				}
-				else if ( flag >= probability )
+				if ( location[i][j] == false )
 				{
-					//非雷
-					location[i][j] = false;
+					if ( const double flag = rand ( ) / static_cast<double>(RAND_MAX); flag < probability )
+					{
+						//雷
+						location[i][j] = true;
+						now_mine++;
+					}
+					else if ( flag >= probability )
+					{
+						//非雷
+						location[i][j] = false;
+					}
 				}
 				Sleep ( 1 );
 			}
